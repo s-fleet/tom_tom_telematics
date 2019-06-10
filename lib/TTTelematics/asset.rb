@@ -1,6 +1,6 @@
 module TTTelematics
   module API
-    class Asset
+    class Asset < TTTelematic
       PERMIT_KEYS =  { filterstring: 'string', 
                      objectgroupname: 'string', 
                      oungroupedonlye: 'string',
@@ -8,13 +8,10 @@ module TTTelematics
                      objectuid: 'string',
                      externalid: 'string'}
 
-      def initialize(client)
-        raise TypeError if !(client.is_a?(Client)) 
-        @client = client
-      end
-
       def objects(options)
         validates(options)
+        request = Request.new(@client)
+        request.get()
       end
 
       private
