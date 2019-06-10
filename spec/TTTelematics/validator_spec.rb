@@ -28,4 +28,18 @@ RSpec.describe Validator, "Validator values" do
     end
   end
 
+  describe 'validates format value' do
+    it 'shoudl return a false if not valid format' do
+      expect(Validator.check_format?('jasson')).to eq(false)
+    end
+
+    it 'should return a true if valid formats' do
+      expect(Validator.check_format?('json')).to eq(true)
+      expect(Validator.check_format?('JSON')).to eq(true)
+      expect(Validator.check_format?('Json')).to eq(true)
+      expect(Validator.check_format?('csv')).to eq(true)
+      expect(Validator.check_format?('CsV')).to eq(true)
+    end
+  end
+
 end
