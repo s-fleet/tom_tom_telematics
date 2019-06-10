@@ -20,12 +20,6 @@ RSpec.describe TTTelematics::API::Asset, "TTTelematics Assets" do
       end.to raise_error(TypeError)
     end
 
-    it 'should raise an error if optional arguments has type errors' do
-      client = TTTelematics::API::Client.new('apikey','client', 'username', 'password') 
-      expect do
-        TTTelematics::API::Asset.new(client)
-      end.to raise_error(TypeError)
-    end
   end
   #TTTelematics::API::Asset#objects
   describe 'get objects' do
@@ -33,15 +27,15 @@ RSpec.describe TTTelematics::API::Asset, "TTTelematics Assets" do
     let(:asset) { TTTelematics::API::Asset.new(client) }
 
     it 'should raise an error if arguments has type errors' do
-      #filter_string = String
-      #object_group_name = String
+      #filterstring = String
+      #objectgroupname = String
       #ungrouped_only = String
       #objectno = String
       #objectuid = String
       #externaluid = String
       expect do
         objects = asset.objects({filter_string: nil, objectno: 1234})
-      end.to raise_error(TypeError)
+      end.to raise_error(ArgumentError)
     end
 
     it 'should raise an error if arguments has type errors' do
@@ -52,18 +46,18 @@ RSpec.describe TTTelematics::API::Asset, "TTTelematics Assets" do
       #objectuid = String
       #externaluid = String
       expect do
-        objects = asset.objects({filter_string: nil, objectnrito: '12314'})
-      end.to raise_error(ArgumentError)
+        objects = asset.objects({filterstring: nil, objectno: 1234})
+      end.to raise_error(TypeError)
     end
 
     it 'should a constant variable for permit keys' do
       expect(TTTelematics::API::Asset::PERMIT_KEYS).to eq(
-        ['filterstring', 
-         'objectgroupname', 
-         'oungroupedonly',
-         'objectno',
-         'objectuid',
-         'externalid'])
+                    {filterstring: 'string', 
+                     objectgroupname: 'string', 
+                     oungroupedonlye: 'string',
+                     objectno: 'string',
+                     objectuid: 'string',
+                     externalid: 'string'})
     end
 
     it 'should return a array objects if arguments it is OK' do
