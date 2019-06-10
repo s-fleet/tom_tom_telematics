@@ -1,6 +1,6 @@
 module TTTelematics
   module API
-    class Asset < TTTelematic
+    class Asset < Base
       PERMIT_KEYS =  { filterstring: 'string', 
                      objectgroupname: 'string', 
                      oungroupedonlye: 'string',
