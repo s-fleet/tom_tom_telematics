@@ -18,4 +18,9 @@ module Validator
     end
     return err_flag
   end
+
+  def self.check_format?(format)
+    FORMAT_VALID = ['json', 'xml'].freeze
+    return FORMAT_VALID.include? format.to_s.downcase
+  end
 end
