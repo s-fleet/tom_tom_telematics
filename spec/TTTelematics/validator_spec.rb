@@ -1,3 +1,4 @@
+require 'byebug'
 RSpec.describe Validator, "Validator values" do
   describe 'validates keys' do
     it 'should return false if keys not valid' do
