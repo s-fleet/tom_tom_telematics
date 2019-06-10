@@ -1,4 +1,5 @@
 module Validator
+  FORMAT_VALID = ['json', 'xml'].freeze 
   def self.check_keys?(permitted, options)
     permitted_keys = permitted.keys.map(&:to_s)
     option_keys = options.keys.map(&:to_s)
@@ -20,7 +21,6 @@ module Validator
   end
 
   def self.check_format?(format)
-    FORMAT_VALID = ['json', 'xml'].freeze
     return FORMAT_VALID.include? format.to_s.downcase
   end
 end
