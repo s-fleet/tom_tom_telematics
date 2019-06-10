@@ -1,26 +1,4 @@
 RSpec.describe TTTelematics::API::Asset, "TTTelematics Assets" do
-  describe 'initialize Asset wrong' do
-    it 'should raise an error with no arguments' do
-      expect do
-        TTTelematics::API::Asset.new
-      end.to raise_error(ArgumentError)
-    end
-
-    it 'should raise an error with type errors arguments' do
-      expect do
-        #client = TTTelematics::API::Client.new('xxxx', 'client', 'username', 'password')
-        TTTelematics::API::Asset.new(nil)
-      end.to raise_error(TypeError)
-    end
-
-    it 'should raise an error if client is not kind of Client' do
-      expect do
-        client = Object.new 
-        TTTelematics::API::Asset.new(client)
-      end.to raise_error(TypeError)
-    end
-
-  end
   #TTTelematics::API::Asset#objects
   describe 'get objects' do
     let(:client) { TTTelematics::API::Client.new('apikey','client', 'username', 'password') }
