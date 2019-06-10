@@ -1,3 +1,5 @@
+require_relative './TTTelematics/asset'
+require_relative './TTTelematics/request' 
 module TTTelematics
   module API
     class Client
