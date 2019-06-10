@@ -14,8 +14,15 @@ module TTTelematics
       end
 
       def objects(options)
-        validate_keys?(permitted_keys, options.keys.map(&:to_s))
-        validate_values?(PERMIT_KEYS, options)
+        validates(options)
       end
+
+      private
+      def validates(options)
+        raise ArgumentError unless Validator.check_keys?(PERMIT_KEYS, options)
+        raise TypeError unless Validator.check_type_values?(PERMIT_KEYS, options)
+        true
+      end
+    end
   end
 end
