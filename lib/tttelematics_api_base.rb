@@ -1,11 +1,6 @@
 #Modules
 require_relative './TTTelematics/validator'
 
-#classes
-require_relative './TTTelematics/asset'
-require_relative './TTTelematics/request' 
-require_relative './TTTelematics/client'
-
 module TTTelematics
   module API
     class Base
@@ -16,3 +11,9 @@ module TTTelematics
     end
   end
 end
+
+#classes
+require_relative './TTTelematics/asset'
+require_relative './TTTelematics/request' 
+require_relative './TTTelematics/client'
+
