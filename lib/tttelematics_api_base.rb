@@ -4,7 +4,7 @@ require_relative './TTTelematics/validator'
 module TTTelematics
   module API
     class Base
-      BASE_URL = 'https://csv.telematics.tomtom.com/'
+      BASE_URL = 'https://csv.telematics.tomtom.com/'.freeze
 
       def initialize(client)
         raise TypeError if !(client.is_a?(Client)) 
