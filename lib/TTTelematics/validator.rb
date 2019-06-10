@@ -14,6 +14,8 @@ module Validator
         err_flag = (value.is_a?(String)) 
       elsif type == 'integer'
         err_flag = (value.is_a?(Integer)) 
+      else
+        err_flag = false
       end
       break unless err_flag
     end
