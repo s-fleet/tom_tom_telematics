@@ -27,24 +27,12 @@ RSpec.describe TTTelematics::API::Asset, "TTTelematics Assets" do
     let(:asset) { TTTelematics::API::Asset.new(client) }
 
     it 'should raise an error if arguments has type errors' do
-      #filterstring = String
-      #objectgroupname = String
-      #ungrouped_only = String
-      #objectno = String
-      #objectuid = String
-      #externaluid = String
       expect do
         objects = asset.objects({filter_string: nil, objectno: 1234})
       end.to raise_error(ArgumentError)
     end
 
     it 'should raise an error if arguments has type errors' do
-      #filter_string = String
-      #object_group_name = String
-      #ungrouped_only = String
-      #objectno = String
-      #objectuid = String
-      #externaluid = String
       expect do
         objects = asset.objects({filterstring: nil, objectno: 1234})
       end.to raise_error(TypeError)
@@ -64,7 +52,6 @@ RSpec.describe TTTelematics::API::Asset, "TTTelematics Assets" do
       expect(asset.objects({objectno: 'JETTA'})).not_to be_empty  
     end
 
-    pending 'should return an type error TTTelematicError if bad request' do
-    end
+    pending 'should return an type error TTTelematicError if bad request'
   end
 end
