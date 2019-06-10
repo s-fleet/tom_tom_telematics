@@ -1,5 +1,9 @@
 Rspec describe TTTelematics::API::Base, 'TTelematic Class Master' do
-  describe 'initialize Asset wrong' do
+
+  it 'should has a BASE_URL correct' do
+    expect(TTTelematics::API::Base::BASE_URL).to eq('https://csv.telematics.tomtom.com/')
+  end
+  describe 'initialize Base wrong' do
     it 'should raise an error with no arguments' do
       expect do
         TTTelematics::API::Base.new
