@@ -1,7 +1,7 @@
 module TTTelematics
   module API
-    class Request
-      def initialize
+    class Request < TTTelematic
+      def get
       end
     end
   end
