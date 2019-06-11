@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'TTTelematics'
-  s.version     = '0.0.2',
+  s.version     = '0.0.2'
   s.date        = '2019-06-11'
   s.summary     = 'a simple client for Tom Tom Telematics'
   s.description = 'A simple API wrapper for Tom Tom Telematics'
