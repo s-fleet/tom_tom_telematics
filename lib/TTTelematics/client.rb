@@ -10,6 +10,10 @@ module TTTelematics
         @password = password 
       end
 
+      def asset
+        Asset.new(self)
+      end
+
       private
       def validate_options?(*args)
         flag = true

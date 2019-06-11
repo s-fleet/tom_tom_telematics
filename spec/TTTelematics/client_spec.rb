@@ -18,4 +18,12 @@ RSpec.describe TTTelematics::API, "TTTelematics" do
      end.to raise_error(TypeError)
     end
   end
+  describe 'asset objects' do
+    let(:client) { TTTelematics::API::Client.new('apikey','username', 'client', 'password') }
+    it 'initialize asset return a TTTelematics::API::Asset' do
+      asset = client.asset
+      expect(asset).to be_a_kind_of(TTTelematics::API::Asset)
+    end
+  end
 end
+
