@@ -15,7 +15,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 #
 require 'webmock/rspec'
-require 'tttelematics_api_base'
+require 'tttelematics'
 
 
 RSpec.configure do |config|

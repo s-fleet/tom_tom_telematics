@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = 'A simple API wrapper for Tom Tom Telematics'
   s.authors     = ["Alexei Mamani"]
   s.email       = 'alexeim763@gmail.com'
-  s.files       = Dir['lib/*.rb']
+  s.files       = Dir["lib/**/*"] + %w(LICENSE README.md)
   s.homepage    = 'https://github.com/s-fleet/tom_tom_telematics'
   s.license     = 'MIT'
 
