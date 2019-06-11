@@ -4,7 +4,7 @@ RSpec.describe TTTelematics::API::Request, "TTTelematics Request" do
     let!(:request) { TTTelematics::API::Request.new(client) }
     
     it 'should raise error if request has invalid api_key' do
-      stub_request(:get, "httpe://csv.telematics.tomtom.com/extern?account=badaccount&action=showVehicleReportExtern&apikey=badApiKey&lang=en&objectno=JETTA&outputformat=json&password=badpassword&username=badusername").
+      stub_request(:get, "https://csv.telematics.tomtom.com/extern?account=badaccount&action=showVehicleReportExtern&apikey=badApiKey&lang=en&objectno=JETTA&outputformat=json&password=badpassword&username=badusername").
         to_return(status: 200, body: ({'errorCode': 1143, 'errMsg': 'API key is invalid'}.to_json), headers: {})
       expect do
         request.get('showVehicleReportExtern', {objectno: "JETTA"})
