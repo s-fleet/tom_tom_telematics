@@ -1,7 +1,7 @@
 # TTTelematics
 A simple ruby API Wrapper for TomTomTelematics
 
-# Quick start
+## 1. Quick start
 
 Install via Rubygems
 
@@ -15,15 +15,42 @@ gem install tttelematics
 gem 'tttelematics'
 ```
 
-# Initialize Client
+## 2. Initialize Client
 
 ```ruby
 client = TTTelematics::API::Client.new('apikey','username','account','password')
 ```
 
 
-# Get Objects
+## 3. Get Objects
+For more options [Resources Objects TomTomTelematics](https://telematics.tomtom.com/static/help/webfleet-connect/en_gb/index.htm#Objects.htm).
+
+### 3.1 showObjectReportExtern
+[More details](https://telematics.tomtom.com/static/help/webfleet-connect/en_gb/index.htm#showObjectReportExtern.htm)
 
 ```ruby
-client.objects({})
+#format = ['json','csv']
+#client.asset.objects(options, format)
+
+client.asset({objectno: 'OBJECTID'}, 'json')
+or 
+asset = client.asset
+objects = asset.objects({}, 'json')
+
+asset = TTTelematics::API::Asset.new(client)
+objects = asset({objectno: 'OBJECTID'}, 'json') #response a json
+
+array_objects = JSON.parse(objects)
+```
+## 4. Errors
+[More details](https://telematics.tomtom.com/static/help/webfleet-connect/en_gb/index.htm#Responsecodes-wfc.htm)
+
+```ruby
+# Common Errors
+
+TTTelematics::Err::InvalidAPIKey -> API key is invalid
+TTTelematics::Err::InvalidUser -> User does not exist
+TTTelematics::Err::InvalidAction -> Action is not valid
+
+
 ```
