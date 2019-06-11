@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name        = 'TTTelematics'
+  s.name        = 'tttelematics'
   s.version     = '0.0.2'
   s.date        = '2019-06-11'
   s.summary     = 'a simple client for Tom Tom Telematics'
