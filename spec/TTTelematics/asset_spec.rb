@@ -33,15 +33,9 @@ RSpec.describe TTTelematics::API::Asset, "TTTelematics Assets" do
 
     it 'should return a array objects if arguments it is OK' do
       stub_request(:get, "https://csv.telematics.tomtom.com/extern?account=username&action=showObjectReportExtern&api_key=apikey&lang=en&objectno=JETTA&outputformat=json&password=password&username=client").
-        #with(
-          #headers: {
-            #'Accept'=>'*/*',
-            #'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-            #'User-Agent'=>'Faraday v0.15.4'
-        #}).
-        to_return(status: 200, body: [{'objectno': 'JETTA'}] , headers: {})
+        to_return(status: 200, body: [{'objectno': 'JETTA'}].to_json , headers: {})
         response = asset.objects({objectno: 'JETTA'})
-        expect(response.first[:objectno]).to eq('JETTA')
+        expect(JSON.parse(response).first['objectno']).to eq('JETTA')
     end
   end
 end
