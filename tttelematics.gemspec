@@ -1,3 +1,6 @@
+lib = File.expand_path("lib", __dir__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
 Gem::Specification.new do |s|
   s.name        = 'tttelematics'
   s.version     = '0.0.2'
@@ -6,9 +9,10 @@ Gem::Specification.new do |s|
   s.description = 'A simple API wrapper for Tom Tom Telematics'
   s.authors     = ["Alexei Mamani"]
   s.email       = 'alexeim763@gmail.com'
-  s.files       = Dir["lib/**/*"] + %w(LICENSE README.md)
+  s.files       = Dir.glob["lib/**/*.rb"] + %w(LICENSE README.md)
   s.homepage    = 'https://github.com/s-fleet/tom_tom_telematics'
   s.license     = 'MIT'
+  s.require_paths = ['lib']
 
   s.add_development_dependency 'rubocop', '~> 0.71.0'
 
