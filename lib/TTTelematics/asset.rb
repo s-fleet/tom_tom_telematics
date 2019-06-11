@@ -9,7 +9,7 @@ module TTTelematics
                      externalid: 'string'}).freeze
       ACTION_OBJECTS_METHOD = 'showObjectReportExtern'.freeze
 
-      def objects(options, format = 'json')
+      def objects(options = {}, format = 'json')
         validates(options,format)
         request = Request.new(@client)
         response = request.get(ACTION_OBJECTS_METHOD, options, format)

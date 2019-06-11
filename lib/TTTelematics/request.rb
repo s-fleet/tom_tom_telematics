@@ -2,6 +2,7 @@ module TTTelematics
   module API
     class Request < Base
       require 'faraday'
+      require 'json'
       require 'byebug'
       LANG = 'en'.freeze
       def get(action, params, format = 'json')
@@ -23,7 +24,7 @@ module TTTelematics
            params[:action] = action
            params[:outputformat] = format
            params[:account] = @client.account
-           params[:api_key] = @client.api_key
+           params[:apikey] = @client.api_key
            params[:username] = @client.username
            params[:password] = @client.password
            params[:lang] = LANG 
@@ -33,14 +34,14 @@ module TTTelematics
         def handle_response(response)
           body = JSON.parse(response.body)
           begin
-            errCode = body['errCode']
+            errCode = body['errorCode']
           rescue TypeError
             errCode = nil
           end
           unless errCode.nil?
-            raise TTTelematics::Err::InvalidAPIKey if body['errCode'] == 1143
-            raise TTTelematics::Err::InvalidUser if body['errCode'] == 1101
-            raise TTTelematics::Err::InvalidAction if body['errCode'] == 55
+            raise TTTelematics::Err::InvalidAPIKey if body['errorCode'] == 1143
+            raise TTTelematics::Err::InvalidUser if body['errorCode'] == 1101
+            raise TTTelematics::Err::InvalidAction if body['errorCode'] == 55
           end
         end
     end
