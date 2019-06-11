@@ -1,24 +1,5 @@
 RSpec.describe TTTelematics::API::Request, "TTTelematics Request" do
   describe 'initialize Asset wrong' do
-    it 'should raise an error with no arguments' do
-      expect do
-        TTTelematics::API::Request.new
-      end.to raise_error(ArgumentError)
-    end
-
-    it 'should raise an error with type errors arguments' do
-      expect do
-        TTTelematics::API::Request.new(nil)
-      end.to raise_error(TypeError)
-    end
-
-    it 'should raise an error if client is not kind of Client' do
-      expect do
-        client = Object.new 
-        TTTelematics::API::Asset.new(client)
-      end.to raise_error(TypeError)
-    end
-
     it 'should raise an url is not a String and valid http' do
       client = TTTelematics::API::Client.new('apikey','client', 'username', 'password')
       url_integer = 111111111
@@ -31,7 +12,6 @@ RSpec.describe TTTelematics::API::Request, "TTTelematics Request" do
       end.to raise_error(TypeError)
     end
   end
-  #TTTelematics::API::Asset#objects
   describe 'call GET' do
     let(:client) { TTTelematics::API::Client.new('apikey','client', 'username', 'password') }
     let(:request) { TTTelematics::API::Request.new(client) }

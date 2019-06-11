@@ -10,15 +10,16 @@ module TTTelematics
       ACTION_OBJECTS_METHOD = 'showObjectReportExtern'.freeze
 
       def objects(options, format = 'json')
-        validates(options)
+        validates(options,format)
         request = Request.new(@client)
         request.get(ACTION_OBJECTS_METHOD, options, format)
       end
 
       private
-      def validates(options)
+      def validates(options, format)
         raise ArgumentError unless Validator.check_keys?(PERMIT_KEYS, options)
         raise TypeError unless Validator.check_type_values?(PERMIT_KEYS, options)
+        raise ArgumentError unless Validator.check_format?(format)
         true
       end
     end
