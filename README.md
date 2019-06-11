@@ -14,6 +14,11 @@ gem install tttelematics
 ```ruby
 gem 'tttelematics'
 ```
+use in IRB
+
+```
+require 'tttelematics'
+```
 
 ## 2. Initialize Client
 
