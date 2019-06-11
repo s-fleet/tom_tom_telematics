@@ -11,6 +11,8 @@ module TTTelematics
            
           params = generate_params(action, params, format)
           response = Faraday.get(BASE_URL, params) 
+          handle_response(response)
+          response
         else
           raise TypeError
         end
@@ -26,6 +28,17 @@ module TTTelematics
            params[:password] = @client.password
            params[:lang] = LANG 
            params
+        end
+
+        def handle_response(response)
+          begin
+            errCode = response.body[:errCode]
+          rescue TypeError
+            errCode = nil
+          end
+          unless errCode.nil?
+            raise TTTelematics::Err::InvalidAPIKey if response.body[:errCode] == '1143'
+          end
         end
     end
   end

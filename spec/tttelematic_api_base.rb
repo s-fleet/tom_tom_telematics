@@ -1,7 +1,7 @@
 Rspec describe TTTelematics::API::Base, 'TTelematic Class Master' do
 
   it 'should has a BASE_URL correct' do
-    expect(TTTelematics::API::Base::BASE_URL).to eq('https://csv.telematics.tomtom.com/')
+    expect(TTTelematics::API::Base::BASE_URL).to eq('https://csv.telematics.tomtom.com/extern')
   end
   describe 'initialize Base wrong' do
     it 'should raise an error with no arguments' do
@@ -12,7 +12,6 @@ Rspec describe TTTelematics::API::Base, 'TTelematic Class Master' do
 
     it 'should raise an error with type errors arguments' do
       expect do
-        #client = TTTelematics::API::Client.new('xxxx', 'client', 'username', 'password')
         TTTelematics::API::Base.new(nil)
       end.to raise_error(TypeError)
     end

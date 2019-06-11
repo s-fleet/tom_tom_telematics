@@ -7,7 +7,7 @@ require_relative './TTTelematics/err'
 module TTTelematics
   module API
     class Base
-      BASE_URL = 'https://csv.telematics.tomtom.com/'.freeze
+      BASE_URL = 'https://csv.telematics.tomtom.com/extern'.freeze
 
       def initialize(client)
         raise TypeError if !(client.is_a?(Client)) 
