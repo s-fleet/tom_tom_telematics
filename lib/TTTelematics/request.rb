@@ -31,13 +31,16 @@ module TTTelematics
         end
 
         def handle_response(response)
+          body = JSON.parse(response.body)
           begin
-            errCode = response.body[:errCode]
+            errCode = body['errCode']
           rescue TypeError
             errCode = nil
           end
           unless errCode.nil?
-            raise TTTelematics::Err::InvalidAPIKey if response.body[:errCode] == '1143'
+            raise TTTelematics::Err::InvalidAPIKey if body['errCode'] == 1143
+            raise TTTelematics::Err::InvalidUser if body['errCode'] == 1101
+            raise TTTelematics::Err::InvalidAction if body['errCode'] == 55
           end
         end
     end
