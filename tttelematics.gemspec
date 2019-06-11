@@ -1,9 +1,10 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'TTTelematics/version'
 
 Gem::Specification.new do |s|
   s.name        = 'tttelematics'
-  s.version     = '0.0.2'
+  s.version     = TTTelematics::VERSION
   s.date        = '2019-06-11'
   s.summary     = 'a simple client for Tom Tom Telematics'
   s.description = 'A simple API wrapper for Tom Tom Telematics'
