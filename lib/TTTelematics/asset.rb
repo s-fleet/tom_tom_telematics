@@ -12,7 +12,8 @@ module TTTelematics
       def objects(options, format = 'json')
         validates(options,format)
         request = Request.new(@client)
-        request.get(ACTION_OBJECTS_METHOD, options, format)
+        response = request.get(ACTION_OBJECTS_METHOD, options, format)
+        response.body
       end
 
       private
