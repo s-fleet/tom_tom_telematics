@@ -4,24 +4,24 @@ RSpec.describe TTTelematics::API::Request, "TTTelematics Request" do
     let!(:request) { TTTelematics::API::Request.new(client) }
     
     it 'should raise error if request has invalid api_key' do
-      stub_request(:get, "https://csv.telematics.tomtom.com/extern?account=badaccount&action=showVehicleReportExtern&api_key=badApiKey&lang=en&objectno=JETTA&outputformat=json&password=badpassword&username=badusername").
-        to_return(status: 200, body: ({'errCode': 1143, 'errMsg': 'API key is invalid'}.to_json), headers: {})
+      stub_request(:get, "httpe://csv.telematics.tomtom.com/extern?account=badaccount&action=showVehicleReportExtern&apikey=badApiKey&lang=en&objectno=JETTA&outputformat=json&password=badpassword&username=badusername").
+        to_return(status: 200, body: ({'errorCode': 1143, 'errMsg': 'API key is invalid'}.to_json), headers: {})
       expect do
         request.get('showVehicleReportExtern', {objectno: "JETTA"})
       end.to raise_error(TTTelematics::Err::InvalidAPIKey)
     end
 
     it 'should raise error if request has invalid user, password or account' do
-      stub_request(:get, "https://csv.telematics.tomtom.com/extern?account=badaccount&action=showVehicleReportExtern&api_key=badApiKey&lang=en&objectno=JETTA&outputformat=json&password=badpassword&username=badusername").
-        to_return(status: 200, body: {'errCode': 1101, 'errMsg': 'User does not exist'}.to_json , headers: {})
+      stub_request(:get, "https://csv.telematics.tomtom.com/extern?account=badaccount&action=showVehicleReportExtern&apikey=badApiKey&lang=en&objectno=JETTA&outputformat=json&password=badpassword&username=badusername").
+        to_return(status: 200, body: {'errorCode': 1101, 'errMsg': 'User does not exist'}.to_json , headers: {})
       expect do
         request.get('showVehicleReportExtern', {objectno: "JETTA"})
       end.to raise_error(TTTelematics::Err::InvalidUser)
     end
 
     it 'should raise error if action is not valid' do
-      stub_request(:get, "https://csv.telematics.tomtom.com/extern?account=badaccount&action=showVehicleReportExtern&api_key=badApiKey&lang=en&objectno=JETTA&outputformat=json&password=badpassword&username=badusername").
-        to_return(status: 200, body: {'errCode': 55, 'errMsg': 'action is not valid'}.to_json , headers: {})
+      stub_request(:get, "https://csv.telematics.tomtom.com/extern?account=badaccount&action=showVehicleReportExtern&apikey=badApiKey&lang=en&objectno=JETTA&outputformat=json&password=badpassword&username=badusername").
+        to_return(status: 200, body: {'errorCode': 55, 'errMsg': 'action is not valid'}.to_json , headers: {})
       expect do
         request.get('showVehicleReportExtern', {objectno: "JETTA"})
       end.to raise_error(TTTelematics::Err::InvalidAction)
