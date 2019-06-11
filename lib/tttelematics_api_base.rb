@@ -1,6 +1,9 @@
 #Modules
 require_relative './TTTelematics/validator'
 
+#Errors
+require_relative './TTTelematics/err'
+
 module TTTelematics
   module API
     class Base
