@@ -2,7 +2,7 @@ module TTTelematics
   module Err
     class InvalidAPIKey < StandardError 
       def message
-        'action is not valid'
+        'API key is invalid'
       end
     end
 
