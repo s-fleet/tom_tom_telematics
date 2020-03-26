@@ -1,10 +1,10 @@
-#Modules
-require_relative './TTTelematics/validator'
+# Modules
+require 'TTTelematics/validator'
 
-#Errors
-require_relative './TTTelematics/err'
+# Errors
+require 'TTTelematics/err'
 
-require_relative './TTTelematics/version'
+require 'TTTelematics/version'
 
 module TTTelematics
   module API
@@ -12,15 +12,15 @@ module TTTelematics
       BASE_URL = 'https://csv.telematics.tomtom.com/extern'.freeze
 
       def initialize(client)
-        raise TypeError if !(client.is_a?(Client)) 
+        raise TypeError unless client.is_a?(Client)
+
         @client = client
       end
     end
   end
 end
 
-#classes
-require_relative './TTTelematics/asset'
-require_relative './TTTelematics/request' 
-require_relative './TTTelematics/client'
-
+# classes
+require 'TTTelematics/asset'
+require 'TTTelematics/request'
+require 'TTTelematics/client'
