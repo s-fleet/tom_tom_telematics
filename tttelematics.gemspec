@@ -17,6 +17,6 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'rubocop', '~> 0.71.0'
 
-  s.add_runtime_dependency 'faraday', '~> 0.15.4'
-  s.add_runtime_dependency 'json', '~> 2.2'
+  s.add_runtime_dependency 'faraday', '~> 1.0'
+  s.add_runtime_dependency 'json', '~> 2.3'
 end
