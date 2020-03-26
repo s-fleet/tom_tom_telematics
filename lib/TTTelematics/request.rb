@@ -3,15 +3,14 @@ module TTTelematics
     class Request < Base
       require 'faraday'
       require 'json'
-      require 'byebug'
       LANG = 'en'.freeze
       def get(action, params, format = 'json')
-        if (action.is_a?(String)) && 
+        if (action.is_a?(String)) &&
            !(action.nil?) &&
            !(action.empty?)
-           
+
           params = generate_params(action, params, format)
-          response = Faraday.get(BASE_URL, params) 
+          response = Faraday.get(BASE_URL, params)
           handle_response(response)
           response
         else
@@ -27,7 +26,7 @@ module TTTelematics
            params[:apikey] = @client.api_key
            params[:username] = @client.username
            params[:password] = @client.password
-           params[:lang] = LANG 
+           params[:lang] = LANG
            params
         end
 
