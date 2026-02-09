@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 group :development do
-  gem 'faraday', '~> 1.0'
+  gem 'faraday', '~> 2.14'
   gem 'json', '~> 2.3'
   gem 'rubocop', '~> 0.71.0'
 end
